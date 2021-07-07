@@ -1,0 +1,86 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 06.12.2011 09:56:33
+
+newmtl 12185_Box_Of_Chocolates_Packaging
+	Ns 12.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.5850 0.5850 0.5850
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Packaging_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Packaging_Diffuse.jpg
+
+newmtl 12185_Box_Of_Chocolates_Candy
+	Ns 15.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.2250 0.2250 0.2250
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Candy_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Candy_Diffuse.jpg
+
+newmtl 12185_Box_Of_Chocolates_Ribbon
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.4950 0.4950 0.4950
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Ribbon_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Ribbon_Diffuse.jpg
+
+newmtl 12185_Box_Of_Chocolates_Box_TOp
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0900 0.0900 0.0900
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Box_Top_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Box_Top_Diffuse.jpg
+
+newmtl 12185_Box_Of_Chocolates_Bow
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.4950 0.4950 0.4950
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Bow_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Bow_Diffuse.jpg
+
+newmtl 12185_Box_Of_Chocolates_Box_Bottom
+	Ns 10.0000
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 1.0000 1.0000 1.0000
+	Kd 1.0000 1.0000 1.0000
+	Ks 0.0900 0.0900 0.0900
+	Ke 0.0000 0.0000 0.0000
+	map_Ka 12185_Box_Of_Chocolates_Box_Bottom_Diffuse.jpg
+	map_Kd 12185_Box_Of_Chocolates_Box_Bottom_Diffuse.jpg
