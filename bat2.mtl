@@ -1,0 +1,99 @@
+newmtl bat2:Black
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batblack.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl bat2:Body
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batcuerpo.png
+Ni 1.00
+Ks 0.00 0.00 0.00
+Ns 96.08
+newmtl bat2:Claws
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batunas.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl bat2:DarkMetal
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batunas.png
+Ni 1.00
+Ks 0.98 0.90 1.00
+Ns 96.08
+newmtl bat2:Lens
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batojobionic.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl bat2:Material
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batojobionic.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl bat2:Material_001
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batoreja.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
+newmtl bat2:Nose
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batblack.png
+Ni 1.00
+Ks 0.50 0.38 0.39
+Ns 96.08
+newmtl bat2:RealEye
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd bateyes.png
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 96.08
+newmtl bat2:Screws
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd batunas.png
+Ni 1.00
+Ks 1.00 1.00 1.00
+Ns 96.08
+newmtl bat2:White
+illum 4
+Kd 0.00 0.00 0.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+map_Kd bateyes.png
+Ni 1.00
+Ks 0.50 0.50 0.50
+Ns 96.08
