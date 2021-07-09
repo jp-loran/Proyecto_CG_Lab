@@ -298,7 +298,7 @@ int main()
 												/*CARGA DE MODELOS*/
 	/*escenario*/
 	Escenario_M = Model();
-	Escenario_M.LoadModel("Models/escenario.obj");
+	Escenario_M.LoadModel("Models/perroalv.obj");
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Textures/Skybox/cupertin-lake_lf.tga");
@@ -429,12 +429,12 @@ int main()
 
 		
 		/*ESCENARIO*/
-		/*model = glm::mat4(1.0);
+		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::translate(model, glm::vec3(0.0f, 5.0f, 0.0f));
 		model = glm::rotate(model, 180 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Escenario_M.RenderModel();*/
+		Escenario_M.RenderModel();
 
 
 		glUseProgram(0);

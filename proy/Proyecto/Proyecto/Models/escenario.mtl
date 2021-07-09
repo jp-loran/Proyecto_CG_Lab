@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Bow_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Bow_Diffuse.jpg
 
 newmtl 12185_Box_Of_Chocolates_Box_Bottom
 Ns 10.000002
@@ -21,7 +21,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Box_Bottom_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Box_Bottom_Diffuse.jpg
 
 newmtl 12185_Box_Of_Chocolates_Box_TOp
 Ns 10.000002
@@ -32,7 +32,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Box_Top_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Box_Top_Diffuse.jpg
 
 newmtl 12185_Box_Of_Chocolates_Candy
 Ns 14.999996
@@ -43,7 +43,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Candy_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Candy_Diffuse.jpg
 
 newmtl 12185_Box_Of_Chocolates_Packaging
 Ns 12.000000
@@ -54,7 +54,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Packaging_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Packaging_Diffuse.jpg
 
 newmtl 12185_Box_Of_Chocolates_Ribbon
 Ns 10.000002
@@ -65,7 +65,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\12185_Box_Of_Chocolates_Ribbon_Diffuse.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\12185_Box_Of_Chocolates_Ribbon_Diffuse.jpg
 
 newmtl Christmas_Tree
 Ns 10.000002
@@ -76,7 +76,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.500000
 d 1.000000
 illum 2
-map_Kd Texturas\\tree.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tree.jpg
 
 newmtl Default_OBJ
 Ns 225.000000
@@ -87,7 +87,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\sombrero.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\sombrero.png
 
 newmtl Material
 Ns 225.000000
@@ -98,7 +98,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\piso.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\piso.png
 
 newmtl Material.001
 Ns 323.999994
@@ -109,7 +109,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\arbol.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\arbol.png
 
 newmtl Material.002
 Ns 225.000000
@@ -120,7 +120,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\fondo.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\fondo.jpg
 
 newmtl Material.003
 Ns 225.000000
@@ -131,7 +131,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\piso.jpg
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\piso.jpg
 
 newmtl Material.004
 Ns 225.000000
@@ -142,7 +142,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\piso.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\piso.png
 
 newmtl Material.006
 Ns 225.000000
@@ -153,7 +153,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.007
 Ns 225.000000
@@ -164,7 +164,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.008
 Ns 225.000000
@@ -175,7 +175,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.009
 Ns 225.000000
@@ -186,7 +186,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.010
 Ns 225.000000
@@ -197,7 +197,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.011
 Ns 225.000000
@@ -208,7 +208,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.012
 Ns 225.000000
@@ -219,7 +219,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.013
 Ns 225.000000
@@ -230,7 +230,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\pozole.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\pozole.png
 
 newmtl Material.014
 Ns 225.000000
@@ -241,7 +241,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\quesadillas.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\quesadillas.png
 
 newmtl Material.015
 Ns 225.000000
@@ -252,7 +252,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\quesadillas.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\quesadillas.png
 
 newmtl Material.016
 Ns 225.000000
@@ -263,7 +263,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\quesadillas.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\quesadillas.png
 
 newmtl Material.017
 Ns 225.000000
@@ -274,7 +274,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\quesadillas.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\quesadillas.png
 
 newmtl Material.018
 Ns 225.000000
@@ -285,7 +285,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.019
 Ns 225.000000
@@ -296,7 +296,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.020
 Ns 225.000000
@@ -307,7 +307,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.021
 Ns 225.000000
@@ -318,7 +318,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.022
 Ns 225.000000
@@ -329,7 +329,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.023
 Ns 225.000000
@@ -340,7 +340,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.024
 Ns 225.000000
@@ -351,7 +351,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.025
 Ns 225.000000
@@ -362,7 +362,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.026
 Ns 225.000000
@@ -373,7 +373,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.027
 Ns 225.000000
@@ -384,7 +384,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.028
 Ns 225.000000
@@ -395,7 +395,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.029
 Ns 225.000000
@@ -406,7 +406,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.030
 Ns 225.000000
@@ -417,7 +417,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.031
 Ns 225.000000
@@ -428,7 +428,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\tacos.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\tacos.png
 
 newmtl Material.032
 Ns 225.000000
@@ -439,7 +439,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\fiesta-mexicana.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\fiesta-mexicana.png
 
 newmtl Material.034
 Ns 225.000000
@@ -450,7 +450,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\perro.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\perro.png
 
 newmtl _21941_Rabbit_v121941_Rabbit.001
 Ns 225.000000
@@ -461,7 +461,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\conejo.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\conejo.png
 
 newmtl ball_metall
 Ns 79.999987
@@ -502,7 +502,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd Texturas\\fiesta-mexicana.png
+map_Kd C:\\Users\\Josue Yafte\\Documents\\PracticasGrafica\\Proyecto grafica\\proy\\Proyecto\\Proyecto\\Textures\\fiesta-mexicana.png
 
 newmtl loop
 Ns 20.000005
