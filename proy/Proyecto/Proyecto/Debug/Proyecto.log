@@ -1,1 +1,6 @@
-﻿  Proyecto.vcxproj -> C:\Users\Josue Yafte\Documents\PracticasGrafica\Proyecto grafica\proy\Proyecto\Debug\Proyecto.exe
+﻿  Proyecto.cpp
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\window.h(12): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\window.h(13): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(377): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(379): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+  Proyecto.vcxproj -> C:\Users\Josue Yafte\Documents\PracticasGrafica\Proyecto grafica\proy\Proyecto\Debug\Proyecto.exe
