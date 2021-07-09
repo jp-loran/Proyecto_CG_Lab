@@ -1,0 +1,22 @@
+﻿  Iluminacion2021.cpp
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\window.h(12): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\window.h(13): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(402): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(404): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(454): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(521): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(529): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(544): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(546): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(551): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(553): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(554): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(557): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(569): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(586): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(588): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(594): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(596): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(597): warning C4244: '=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\practica6\practica6\iluminacion2021.cpp(600): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+  practica6.vcxproj -> C:\Users\Josue Yafte\Documents\PracticasGRafica\practica6\Debug\practica6.exe
