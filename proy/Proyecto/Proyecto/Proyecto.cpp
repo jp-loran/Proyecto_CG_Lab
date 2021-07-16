@@ -52,7 +52,12 @@ Texture plainTexture;
 Texture pisoTexture;
 //MODELOS
 Model Escenario_M;
-
+Model Jack_M;
+Model Perro_M;
+/*ANIMACION*/
+//perro
+float ofsetYperro = 0.0f;
+float posYperro = 0.0f;
 
 
 Skybox skybox;
@@ -280,7 +285,7 @@ int main()
 	
 	
 	
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 5.0f, 0.5f);
+	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 2.0f, 0.3f);
 													/*Texturas CARGA*/
 
 	brickTexture = Texture("Textures/brick.png");
@@ -299,6 +304,12 @@ int main()
 	/*escenario*/
 	Escenario_M = Model();
 	Escenario_M.LoadModel("Models/escenario.obj");
+
+	//Jack_M = Model();
+	//Jack_M.LoadModel("Models/jacktriller.fbx");
+
+	Perro_M = Model();
+	Perro_M.LoadModel("Models/perroalv.obj");
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/fondort.png");
 	skyboxFaces.push_back("Textures/Skybox/fondoleft.png");
@@ -312,8 +323,7 @@ int main()
 	Material_brillante = Material(4.0f, 256);
 	Material_opaco = Material(0.3f, 4);
 
-	//posición inicial del helicóptero
-	glm::vec3 posblackhawk = glm::vec3(-20.0f, 6.0f, -1.0);
+	
 
 	//luz direccional, sólo 1 y siempre debe de existir
 	mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
@@ -322,11 +332,7 @@ int main()
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
-	/*pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-		0.0f, 1.0f,
-		2.0f, 1.5f, 1.5f,
-		0.3f, 0.2f, 0.1f);
-	pointLightCount++;*/
+	
 
 	unsigned int spotLightCount = 0;
 	//linterna
@@ -434,8 +440,33 @@ int main()
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
 		model = glm::rotate(model, 0 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Escenario_M.RenderModel();
+		
+		/*PERRO*/
+		ofsetYperro+=1*deltaTime;
+		posYperro = 10*sin(ofsetYperro*toRadians);
 
+		glm::vec3 despPerro = glm::vec3(0.0f, posYperro, 0.0f);
+		glm::vec3 posPerro= glm::vec3(0.0f, -2.0f, 0.0f)+despPerro;
+		//pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		//	0.0f, 0.0f,//intensidad
+		//	0.0f,0.0f,0.0f,//posPerro.x,posPerro.y,posPerro.z,//posicion
+		//	0.5f, 0.2f, 0.1f);//4(.2)^2-2*0.5*0.1
+		//pointLightCount++;
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::translate(model, posPerro);
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		Perro_M.RenderModel();
+
+		/*model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
+		model = glm::rotate(model, 0 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Jack_M.RenderModel();*/
 
 		glUseProgram(0);
 
