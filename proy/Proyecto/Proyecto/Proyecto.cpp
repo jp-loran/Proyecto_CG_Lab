@@ -54,11 +54,35 @@ Texture pisoTexture;
 Model Escenario_M;
 Model Jack_M;
 Model Perro_M;
+Model murcielago_M;
 /*ANIMACION*/
 //perro
-float ofsetYperro = 0.0f;
+float offsetXperro = 0.0f;
+float offsetYperro = 0.0f;
+float offsetZperro = 0.0f;
+float posXperro = 0.0f;
 float posYperro = 0.0f;
-
+float posZperro = 0.0f;
+float anguloXperro = 0.0f;
+float anguloZperro = 0.0f;
+float anguloYperro = 0.0f;
+bool avanzarDerecha = false;
+bool hacerCirculo = false;
+bool avanzarIzquierda = false;
+//murcielago
+float offsetXmur = 0.0f;
+float offsetYmur = 0.0f;
+float offsetZmur = 0.0f;
+float posXmur = 0.0f;
+float posYmur = 0.0f;
+float posZmur = 0.0f;
+float anguloXmur = 0.0f;
+float anguloZmur = 0.0f;
+float anguloYmur = 0.0f;
+bool girarCirculo1 = false;
+bool irACirculo2 = false;
+bool girarCirculo2 = false;
+bool irACirculo1 = false;
 
 Skybox skybox;
 
@@ -302,21 +326,27 @@ int main()
 
 												/*CARGA DE MODELOS*/
 	/*escenario*/
-	Escenario_M = Model();
-	Escenario_M.LoadModel("Models/escenario.obj");
+	/*Escenario_M = Model();
+	Escenario_M.LoadModel("Models/escenario.obj");*/
 
 	//Jack_M = Model();
 	//Jack_M.LoadModel("Models/jacktriller.fbx");
 
 	Perro_M = Model();
 	Perro_M.LoadModel("Models/perroalv.obj");
+
+	murcielago_M= Model();
+	murcielago_M.LoadModel("Models/bat2.obj");
+
+
+
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/fondort.png");
-	skyboxFaces.push_back("Textures/Skybox/fondoleft.png");
-	skyboxFaces.push_back("Textures/Skybox/fondodn.png");
-	skyboxFaces.push_back("Textures/Skybox/fondoup.png");
-	skyboxFaces.push_back("Textures/Skybox/fondobk.png");
-	skyboxFaces.push_back("Textures/Skybox/fondofrente.png");
+	skyboxFaces.push_back("Textures/Skybox/fondort.png");//derecha 
+	skyboxFaces.push_back("Textures/Skybox/fondoleft.png");//izq
+	skyboxFaces.push_back("Textures/Skybox/fondodn.png");//abajo
+	skyboxFaces.push_back("Textures/Skybox/fondoup.png");//arriba
+	skyboxFaces.push_back("Textures/Skybox/fondobk.png");//atras
+	skyboxFaces.push_back("Textures/Skybox/fondofrente.png");//frente
 
 	skybox = Skybox(skyboxFaces);
 
@@ -435,19 +465,90 @@ int main()
 
 		
 		/*ESCENARIO*/
-		model = glm::mat4(1.0);
+		/*model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
 		model = glm::rotate(model, 0 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Escenario_M.RenderModel();
-		
+		*/
 		/*PERRO*/
-		ofsetYperro+=1*deltaTime;
-		posYperro = 10*sin(ofsetYperro*toRadians);
-
-		glm::vec3 despPerro = glm::vec3(0.0f, posYperro, 0.0f);
+		offsetYperro+=1*deltaTime;
+		posYperro = 3*sin(offsetYperro*toRadians);
+		
+			if (!avanzarDerecha && !hacerCirculo && !avanzarIzquierda) {
+				/*hacer que avance a derecha*/
+				if (posXperro <30.0) {
+					offsetXperro += 0.005*deltaTime;
+					posXperro += offsetXperro * deltaTime;
+				}
+				else {
+					avanzarDerecha = true;
+					hacerCirculo = false;
+					avanzarIzquierda = false;
+					offsetXperro = 0.0f;
+				}
+			}
+			if (avanzarDerecha && !hacerCirculo && !avanzarIzquierda) {
+				/*hacer que avance a hacer circulo*/
+				if (offsetXperro < 360.0) {
+					offsetXperro += 1*deltaTime;
+					
+					posXperro = (float)(31 * cos(offsetXperro*toRadians)); //calculo de x
+					posZperro = (float)(31 * sin(offsetXperro*toRadians)); //calculo de y 
+					if (anguloXperro > -270.0 && posXperro > -31.0) {
+						offsetZperro -= 0.02 * deltaTime;//angulo
+						anguloXperro += offsetZperro * deltaTime;
+					}
+					else if (anguloXperro < -270.0 && anguloXperro>-360.0 && posXperro < 0.0) {
+						offsetZperro -= 0.03 * deltaTime;//angulo
+						anguloXperro += offsetZperro * deltaTime;
+					}
+					//else i
+						
+				}
+				else {
+					if(anguloXperro<-360.0 && anguloXperro>-540.0) {
+							offsetZperro -= 0.03 * deltaTime;//angulo
+							anguloXperro += offsetZperro * deltaTime;
+					}
+					else {
+						avanzarDerecha = false;
+						hacerCirculo = true;
+						avanzarIzquierda = false;
+						offsetXperro = 0.0f;
+						offsetZperro = 0.0f;//angulo
+					}
+					
+				}
+				
+			}
+			if (!avanzarDerecha && hacerCirculo && !avanzarIzquierda) {
+				/*hacer que avance a avanzar izq*/
+				if (posXperro > 0.0) {
+					offsetXperro -= 0.005*deltaTime;
+					posXperro += offsetXperro * deltaTime;
+				}
+				else {
+					offsetZperro += 0.5 * deltaTime;//angulo
+					if (anguloXperro < 0.0) {
+						anguloXperro += offsetZperro * deltaTime;
+					}
+					else {
+						avanzarDerecha = false;
+						hacerCirculo = false;
+						avanzarIzquierda = false;
+						offsetXperro = 0.0f;
+						offsetZperro = 0.0f;
+					}	
+				}
+			}
+		
+		
+	
+		
+		glm::vec3 despPerro = glm::vec3(posXperro, posYperro, posZperro);
 		glm::vec3 posPerro= glm::vec3(0.0f, -2.0f, 0.0f)+despPerro;
 		//pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 		//	0.0f, 0.0f,//intensidad
@@ -455,12 +556,123 @@ int main()
 		//	0.5f, 0.2f, 0.1f);//4(.2)^2-2*0.5*0.1
 		//pointLightCount++;
 		model = glm::mat4(1.0);
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.6f));
 		model = glm::translate(model, posPerro);
+		model = glm::rotate(model,(anguloXperro)*toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Perro_M.RenderModel();
 
+		/***************************************************MURCIELAGO***************************************************************/
+		if (mainWindow.iniciaAnim()) {
+			if (!girarCirculo1 && !irACirculo2 && !girarCirculo2 && !irACirculo1) {
+				//girar circulo 1
+				if (offsetXmur < 360.0) {
+					offsetXmur += 2.5 * deltaTime;
+
+					posXmur = (float)(10 * cos(offsetXmur*toRadians)); //calculo de x
+					posZmur = (float)(10 * sin(offsetXmur*toRadians)); //calculo de y 
+				}
+				else
+				{
+					if (anguloYmur < 0.0) {
+						offsetYmur += 0.5*deltaTime;
+						anguloYmur += offsetYmur * deltaTime;
+						if (anguloZmur > 0.0) {
+							offsetZmur -= 0.5*deltaTime;
+							anguloZmur += offsetYmur * deltaTime;
+						}
+					}
+					else {
+						girarCirculo1 = true;
+						irACirculo2 = false;
+						girarCirculo2 = false;
+						irACirculo1 = false;
+						offsetXmur = 0.0f;
+						offsetYmur = 0.0f;
+						offsetZmur = 0.0f;
+					}
+					
+				}
+
+			}
+			if (girarCirculo1 && !irACirculo2 && !girarCirculo2 && !irACirculo1) {
+				if (posXmur < 60.0) {
+					offsetXmur += 0.05 * deltaTime;
+					posXmur += offsetXmur * deltaTime;
+				}
+				else
+				{
+					girarCirculo1 = false;
+					irACirculo2 = true;
+					girarCirculo2 = false;
+					irACirculo1 = false;
+					offsetXmur = 0.0f;
+				}
+
+			}
+			if (!girarCirculo1 && irACirculo2 && !girarCirculo2 && !irACirculo1) {
+				if (offsetXmur < 360.0) {
+					offsetXmur += 2.5 * deltaTime;
+
+					posXmur = (float)(10 * cos(offsetXmur*toRadians))+60; //calculo de x
+					posZmur = (float)(10 * sin(offsetXmur*toRadians)); //calculo de y 
+				}
+				else
+				{
+					//aqui gira 180
+					if (anguloYmur>-180.0 ) {
+						offsetYmur -= 0.5*deltaTime;
+						anguloYmur += offsetYmur * deltaTime;
+						if (anguloZmur < 90) {
+							offsetZmur -= 0.5*deltaTime;
+							anguloZmur -= offsetYmur * deltaTime;
+						}
+					}
+					else {
+						girarCirculo1 = false;
+						irACirculo2 = false;
+						girarCirculo2 = true;
+						irACirculo1 = false;
+						offsetXmur = 0.0f;
+						offsetZmur = 0.0f;
+						offsetYmur = 0.0f;
+					}
+				}
+			}
+			if (!girarCirculo1 && !irACirculo2 && girarCirculo2 && !irACirculo1) {
+				if (posXmur >0.0) {
+					offsetXmur += 0.05 * deltaTime;
+					posXmur -= offsetXmur * deltaTime;
+				}
+				else
+				{
+							girarCirculo1 = false;
+							irACirculo2 = false;
+							girarCirculo2 = false;
+							irACirculo1 = false;
+							offsetXmur = 0.0f;
+							offsetZmur = 0.0f;
+							offsetYmur = 0.0f;
+				}
+			}
+		}
+		printf("\nposx:%.2f", posXmur);
+		printf("\nposZ:%.2f", posZmur);
+		printf("\nangulooY:%.2f", anguloYmur);
+		printf("\nangulooZ	:%.2f", anguloZmur);
+		glm::vec3 despMurcielago = glm::vec3(posXmur, posYmur, posZmur);
+		glm::vec3 posMurcielago = glm::vec3(-31.0f, 100.0f, 30.0f) + despMurcielago;
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::translate(model, posMurcielago);
+		model = glm::rotate(model, (-45+anguloZmur)*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, (90+anguloYmur) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		murcielago_M.RenderModel();
+
+		/*Jack*/
 		/*model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));

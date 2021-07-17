@@ -1,6 +1,20 @@
 ﻿  Proyecto.cpp
 c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\window.h(12): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
 c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\window.h(13): warning C4244: 'return': conversión de 'GLint' a 'GLfloat'; posible pérdida de datos
-c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(383): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(385): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(413): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(415): warning C4244: '+=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(483): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(501): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(505): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(513): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(530): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(534): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(571): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(579): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(582): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(601): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(616): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(625): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(628): warning C4244: '-=': conversión de 'double' a 'float'; posible pérdida de datos
+c:\users\josue yafte\documents\practicasgrafica\proyecto grafica\proy\proyecto\proyecto\proyecto.cpp(645): warning C4244: '+=': conversión de 'double' a 'float'; posible pérdida de datos
   Proyecto.vcxproj -> C:\Users\Josue Yafte\Documents\PracticasGrafica\Proyecto grafica\proy\Proyecto\Debug\Proyecto.exe
