@@ -52,7 +52,12 @@ Texture plainTexture;
 Texture pisoTexture;
 //MODELOS
 Model Escenario_M;
-Model Jack_M;
+
+Model torzoJack_M;
+Model brazoIzqJack_M;
+Model brazoDerJack_M;
+Model piernaJack_M;
+
 Model Perro_M;
 Model murcielago_M;
 /*ANIMACION*/
@@ -83,6 +88,28 @@ bool girarCirculo1 = false;
 bool irACirculo2 = false;
 bool girarCirculo2 = false;
 bool irACirculo1 = false;
+//***JACK
+float offsetXjack = 0.0f;
+float offsetYjack = 0.0f;
+float offsetZjack = 0.0f;
+
+float offsetxangulojack = 0.0f;
+float offsetYangulojack = 0.0f;
+float offsetZangulojack = 0.0f;
+float posXjack = 0.0f;
+float posYjack = 0.0f;
+float posZjack = 0.0f;
+float anguloXjack = 0.0f;
+float anguloZjack = 0.0f;
+float anguloYjack = 0.0f;
+
+
+bool irAAmor = false;
+bool irAPascua = false;
+bool irANavidad = false;
+bool irAMexico = false;
+bool regreso = false;
+
 
 Skybox skybox;
 
@@ -325,12 +352,23 @@ int main()
 
 
 												/*CARGA DE MODELOS*/
-	/*escenario*/
-	/*Escenario_M = Model();
+	/*escenario*//*
+	Escenario_M = Model();
 	Escenario_M.LoadModel("Models/escenario.obj");*/
 
-	//Jack_M = Model();
-	//Jack_M.LoadModel("Models/jacktriller.fbx");
+	/**/
+	torzoJack_M= Model();
+	torzoJack_M.LoadModel("Models/torzoJack.obj");
+
+	brazoDerJack_M = Model();
+	brazoDerJack_M.LoadModel("Models/brazoDerJack.obj");
+
+	brazoIzqJack_M = Model();
+	brazoIzqJack_M.LoadModel("Models/brazoIzqJack.obj");
+
+	piernaJack_M = Model();
+	piernaJack_M.LoadModel("Models/piernaJack.obj");
+
 
 	Perro_M = Model();
 	Perro_M.LoadModel("Models/perroalv.obj");
@@ -464,15 +502,15 @@ int main()
 
 
 		
-		/*ESCENARIO*/
-		/*model = glm::mat4(1.0);
+		/**********************************************************************************ESCENARIO*****************************************/
+		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
 		model = glm::rotate(model, 0 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Escenario_M.RenderModel();
-		*/
+		
 		/*PERRO*/
 		offsetYperro+=1*deltaTime;
 		posYperro = 3*sin(offsetYperro*toRadians);
@@ -563,8 +601,8 @@ int main()
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Perro_M.RenderModel();
 
-		/***************************************************MURCIELAGO***************************************************************/
-		if (mainWindow.iniciaAnim()) {
+		/***************************************************MURCIELAGO***********************************************************************/
+		
 			if (!girarCirculo1 && !irACirculo2 && !girarCirculo2 && !irACirculo1) {
 				//girar circulo 1
 				if (offsetXmur < 360.0) {
@@ -580,7 +618,7 @@ int main()
 						anguloYmur += offsetYmur * deltaTime;
 						if (anguloZmur > 0.0) {
 							offsetZmur -= 0.5*deltaTime;
-							anguloZmur += offsetYmur * deltaTime;
+							anguloZmur += offsetZmur * deltaTime;
 						}
 					}
 					else {
@@ -626,7 +664,7 @@ int main()
 						anguloYmur += offsetYmur * deltaTime;
 						if (anguloZmur < 90) {
 							offsetZmur -= 0.5*deltaTime;
-							anguloZmur -= offsetYmur * deltaTime;
+							anguloZmur -= offsetZmur * deltaTime;
 						}
 					}
 					else {
@@ -656,11 +694,8 @@ int main()
 							offsetYmur = 0.0f;
 				}
 			}
-		}
-		printf("\nposx:%.2f", posXmur);
-		printf("\nposZ:%.2f", posZmur);
-		printf("\nangulooY:%.2f", anguloYmur);
-		printf("\nangulooZ	:%.2f", anguloZmur);
+		
+		
 		glm::vec3 despMurcielago = glm::vec3(posXmur, posYmur, posZmur);
 		glm::vec3 posMurcielago = glm::vec3(-31.0f, 100.0f, 30.0f) + despMurcielago;
 		model = glm::mat4(1.0);
@@ -672,13 +707,214 @@ int main()
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		murcielago_M.RenderModel();
 
-		/*Jack*/
-		/*model = glm::mat4(1.0);
+		/*********************************************************************Jack********************************************/
+		/******************ir al arbol del amor y la amistad*/
+		//if (mainWindow.iniciaAnim()) {
+			if (!irAAmor && !irAPascua && !irANavidad && !irAMexico && !regreso) {
+				if (posZjack < 18.0) {
+					offsetZjack += 0.003*deltaTime;
+					posZjack += offsetZjack * deltaTime;
+				}
+				else {
+					if (anguloYjack < 90.0) {
+						offsetYangulojack += 0.05*deltaTime;
+						anguloYjack += offsetYangulojack;
+					}
+					else {
+						if (posXjack < 12.0) {
+							offsetXjack += 0.003*deltaTime;
+							posXjack += offsetXjack * deltaTime;
+						}
+						else {
+							if (anguloYjack < 180.0) {
+								offsetYangulojack += 0.05*deltaTime;
+								anguloYjack += offsetYangulojack;
+							}
+							else {
+								irAAmor = true;
+								irAPascua = false;
+								irANavidad = false;
+								irAMexico = false;
+								regreso = false;
+								offsetZjack = 0.0f;
+								offsetXjack = 0.0f;
+								offsetYangulojack = 0.0f;
+							}
+
+						}
+					}
+				}
+			}
+			/**************************************ir al arbol de pascua***/
+			if (irAAmor && !irAPascua && !irANavidad && !irAMexico && !regreso) {
+				if (posZjack > -18.0) {
+					offsetZjack += 0.003*deltaTime;
+					posZjack -= offsetZjack * deltaTime;
+					if (posXjack < 20.0) {
+						offsetXjack += 0.002*deltaTime;
+						posXjack += offsetXjack * deltaTime;
+					}
+				}
+				else {
+					if (anguloYjack < 270.0) {
+						offsetYangulojack += 0.05*deltaTime;
+						anguloYjack += offsetYangulojack;
+					}
+					else
+					{
+						irAAmor = false;
+						irAPascua = true;
+						irANavidad = false;
+						irAMexico = false;
+						regreso = false;
+						offsetZjack = 0.0f;
+						offsetXjack = 0.0f;
+						offsetYangulojack = 0.0f;
+					}
+				}
+			}
+			/**************************************************ir al arbol de navidad*/
+			if (!irAAmor && irAPascua && !irANavidad && !irAMexico && !regreso) {
+				if (posXjack > -9.0) {
+					offsetXjack -= 0.003*deltaTime;
+					posXjack += offsetXjack * deltaTime;
+				}
+				else {
+					if (anguloYjack < 360.0) {
+						offsetYangulojack += 0.05*deltaTime;
+						anguloYjack += offsetYangulojack;
+					}
+					else
+					{
+						irAAmor = false;
+						irAPascua = false;
+						irANavidad = true;
+						irAMexico = false;
+						regreso = false;
+						offsetZjack = 0.0f;
+						offsetXjack = 0.0f;
+						offsetYangulojack = 0.0f;
+					}
+				}
+			}
+			/***********************************************************ir al arbol mexicano****/
+			if (!irAAmor && !irAPascua && irANavidad && !irAMexico && !regreso) {
+				if (posZjack < 10.0) {
+					offsetZjack += 0.003*deltaTime;
+					posZjack += offsetZjack * deltaTime;
+				}
+				else
+				{
+					if (anguloYjack < 450.0) {
+						offsetYangulojack += 0.05*deltaTime;
+						anguloYjack += offsetYangulojack;
+					}
+					else
+					{
+						irAAmor = false;
+						irAPascua = false;
+						irANavidad = false;
+						irAMexico = true;
+						regreso = false;
+						offsetZjack = 0.0f;
+						offsetXjack = 0.0f;
+						offsetYangulojack = 0.0f;
+					}
+				}
+			}
+			/**********************************************regreso al origen*/
+			if (!irAAmor && !irAPascua && !irANavidad && irAMexico && !regreso) {
+				if (posXjack < 0.0) {
+					offsetXjack += 0.003*deltaTime;
+					posXjack += offsetXjack * deltaTime;
+				}
+				else {
+					if (anguloYjack < 540.0 && posZjack>0.0 && posXjack >= 0.0) {
+						offsetYangulojack += 0.05*deltaTime;
+						anguloYjack += offsetYangulojack;
+					}
+					else
+					{
+						if (posZjack > 0.0) {
+							offsetZjack -= 0.003*deltaTime;
+							posZjack += offsetZjack * deltaTime;
+						}
+						else {
+							if (anguloYjack > 360.0) {
+								offsetYangulojack += 0.05*deltaTime;
+								anguloYjack -= offsetYangulojack * deltaTime;
+							}
+							else
+							{
+								irAAmor = false;
+								irAPascua = false;
+								irANavidad = false;
+								irAMexico = false;
+								regreso = false;
+								offsetZjack = 0.0f;
+								offsetXjack = 0.0f;
+								offsetYangulojack = 0.0f;
+								anguloYjack = 0.0f;
+							}
+						}
+					}
+				}
+			}
+		//}
+		if (anguloZjack<30.0) {
+			offsetZangulojack += 4.5*deltaTime;
+			anguloZjack =10*sin( offsetZangulojack * toRadians);
+		}
+		printf("\nposx:%.2f", posXjack);
+		printf("\nposZ:%.2f", posZjack);
+		printf("\nangulooY:%.2f", anguloYjack);
+		printf("\nangulooZ	:%.2f", anguloZjack);
+		
+		glm::vec3 despJack = glm::vec3(posXjack, posYjack, posZjack);
+		glm::vec3 posJack= glm::vec3(0.0f, -2.0f, 0.0f) + despJack;
+		model = glm::mat4(1.0);
+		model = glm::translate(model,posJack);
+		modelAux = model;//jerarquizacion
 		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
-		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
-		model = glm::rotate(model, 0 * toRadians, glm::vec3(1.0f, 0.0f, -29.0f));
+		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Jack_M.RenderModel();*/
+		torzoJack_M.RenderModel();
+		/********brazoderecho*********/
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-1.10f, 9.4f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f)); 
+		model = glm::rotate(model, anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		brazoDerJack_M.RenderModel();
+		/*************brazoizquierdo**************/
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(1.0f, 9.4f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::rotate(model, -anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		brazoIzqJack_M.RenderModel();
+		/*************pierna1*****************/
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-0.26f, 6.34f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::rotate(model, -anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		piernaJack_M.RenderModel();
+		/****************pierna2*******************/
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.22f, 6.34f, 0.0f));
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::rotate(model, anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		piernaJack_M.RenderModel();
 
 		glUseProgram(0);
 
