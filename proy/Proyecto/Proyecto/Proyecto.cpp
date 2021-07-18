@@ -352,9 +352,9 @@ int main()
 
 
 												/*CARGA DE MODELOS*/
-	/*escenario*//*
+	/*escenario*/
 	Escenario_M = Model();
-	Escenario_M.LoadModel("Models/escenario.obj");*/
+	Escenario_M.LoadModel("Models/escenario.obj");
 
 	/**/
 	torzoJack_M= Model();
@@ -709,7 +709,12 @@ int main()
 
 		/*********************************************************************Jack********************************************/
 		/******************ir al arbol del amor y la amistad*/
-		//if (mainWindow.iniciaAnim()) {
+
+		if (mainWindow.iniciaAnim()) {
+		if (anguloZjack < 30.0) {
+			offsetZangulojack += 4.5*deltaTime;
+			anguloZjack = 10 * sin(offsetZangulojack * toRadians);
+		}
 			if (!irAAmor && !irAPascua && !irANavidad && !irAMexico && !regreso) {
 				if (posZjack < 18.0) {
 					offsetZjack += 0.003*deltaTime;
@@ -744,14 +749,15 @@ int main()
 						}
 					}
 				}
+				printf("\nyendo a amor");
 			}
 			/**************************************ir al arbol de pascua***/
 			if (irAAmor && !irAPascua && !irANavidad && !irAMexico && !regreso) {
 				if (posZjack > -18.0) {
-					offsetZjack += 0.003*deltaTime;
+					offsetZjack += 0.005*deltaTime;
 					posZjack -= offsetZjack * deltaTime;
 					if (posXjack < 20.0) {
-						offsetXjack += 0.002*deltaTime;
+						offsetXjack += 0.004*deltaTime;
 						posXjack += offsetXjack * deltaTime;
 					}
 				}
@@ -772,11 +778,12 @@ int main()
 						offsetYangulojack = 0.0f;
 					}
 				}
+				printf("\nyendo a pascua");
 			}
 			/**************************************************ir al arbol de navidad*/
 			if (!irAAmor && irAPascua && !irANavidad && !irAMexico && !regreso) {
 				if (posXjack > -9.0) {
-					offsetXjack -= 0.003*deltaTime;
+					offsetXjack -= 0.005*deltaTime;
 					posXjack += offsetXjack * deltaTime;
 				}
 				else {
@@ -796,11 +803,12 @@ int main()
 						offsetYangulojack = 0.0f;
 					}
 				}
+				printf("\nyendo a navidad");
 			}
 			/***********************************************************ir al arbol mexicano****/
 			if (!irAAmor && !irAPascua && irANavidad && !irAMexico && !regreso) {
 				if (posZjack < 10.0) {
-					offsetZjack += 0.003*deltaTime;
+					offsetZjack += 0.005*deltaTime;
 					posZjack += offsetZjack * deltaTime;
 				}
 				else
@@ -821,11 +829,12 @@ int main()
 						offsetYangulojack = 0.0f;
 					}
 				}
+				printf("\nyendo a mexico");
 			}
 			/**********************************************regreso al origen*/
 			if (!irAAmor && !irAPascua && !irANavidad && irAMexico && !regreso) {
 				if (posXjack < 0.0) {
-					offsetXjack += 0.003*deltaTime;
+					offsetXjack += 0.005*deltaTime;
 					posXjack += offsetXjack * deltaTime;
 				}
 				else {
@@ -859,16 +868,14 @@ int main()
 						}
 					}
 				}
+				printf("\nyendo a centro");
 			}
-		//}
-		if (anguloZjack<30.0) {
-			offsetZangulojack += 4.5*deltaTime;
-			anguloZjack =10*sin( offsetZangulojack * toRadians);
 		}
-		printf("\nposx:%.2f", posXjack);
+		
+		/*printf("\nposx:%.2f", posXjack);
 		printf("\nposZ:%.2f", posZjack);
 		printf("\nangulooY:%.2f", anguloYjack);
-		printf("\nangulooZ	:%.2f", anguloZjack);
+		printf("\nangulooZ	:%.2f", anguloZjack);*/
 		
 		glm::vec3 despJack = glm::vec3(posXjack, posYjack, posZjack);
 		glm::vec3 posJack= glm::vec3(0.0f, -2.0f, 0.0f) + despJack;
