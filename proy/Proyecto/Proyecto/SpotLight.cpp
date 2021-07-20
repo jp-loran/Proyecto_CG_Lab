@@ -45,12 +45,20 @@ void SpotLight::SetFlash(glm::vec3 pos, glm::vec3 dir)
 	position = pos;
 	direction = dir;
 }
-
+void SpotLight::SetIntensity(GLfloat aintensity, GLfloat dintensity) {
+	ambientIntensity = aintensity;
+	diffuseIntensity = dintensity;
+}
 void SpotLight::SetPos(glm::vec3 pos)
 {
 	position = pos;
 }
-
+void SpotLight::SetColor(GLfloat r, GLfloat g, GLfloat b)
+{
+	color.x = r;
+	color.y = g;
+	color.z = b;
+}
 SpotLight::~SpotLight()
 {
 }

@@ -60,6 +60,7 @@ Model piernaJack_M;
 
 Model Perro_M;
 Model murcielago_M;
+Model Corazon_M;
 /*ANIMACION*/
 //perro
 float offsetXperro = 0.0f;
@@ -74,9 +75,10 @@ float anguloYperro = 0.0f;
 bool avanzarDerecha = false;
 bool hacerCirculo = false;
 bool avanzarIzquierda = false;
-//murcielago
+//murcielago1 COMPLEJA
 float offsetXmur = 0.0f;
 float offsetYmur = 0.0f;
+float offsetYmur2 = 0.0f;
 float offsetZmur = 0.0f;
 float posXmur = 0.0f;
 float posYmur = 0.0f;
@@ -88,6 +90,12 @@ bool girarCirculo1 = false;
 bool irACirculo2 = false;
 bool girarCirculo2 = false;
 bool irACirculo1 = false;
+//murcielago2 BASICA
+float offsetXmur2 = 0.0f;
+float offsetZmur2 = 360.0f;
+float posXmur2 = 0.0f;
+float posYmur2 = 0.0f;
+float posZmur2 = 0.0f;
 //***JACK
 float offsetXjack = 0.0f;
 float offsetYjack = 0.0f;
@@ -109,8 +117,22 @@ bool irAPascua = false;
 bool irANavidad = false;
 bool irAMexico = false;
 bool regreso = false;
+/*Corazon*/
+float offsetXcorazon = 360.0f;
+float offsetYcorazon = 0.0f;
+float offsetAnguloCorazon = 0.0f;
+float posXcorazon = 0.0f;
+float posYcorazon = 0.0f;
+float posZcorazon = 0.0f;
+float anguloCorazon = 0.0f;
 
-
+/*para luces dia noche*/
+float tiempo = 0.0;
+int contador=0;
+//espectaculo
+float tiempo2 = 0.0;
+int contador2 = 0;
+int cambio2=0;
 Skybox skybox;
 
 //materiales
@@ -326,14 +348,14 @@ int main()
 {
 	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
 	mainWindow.Initialise();
-
+	bool cambio = true;
 	CreateObjects();
 	CrearCubo();
 	CreateShaders();
 
 	/*VARIABLES de animacion*/
 	float offset=0.0f;
-	
+	glm::vec3 posPerro;
 	
 	
 	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 2.0f, 0.3f);
@@ -376,7 +398,8 @@ int main()
 	murcielago_M= Model();
 	murcielago_M.LoadModel("Models/bat2.obj");
 
-
+	Corazon_M = Model();
+	Corazon_M.LoadModel("Models/corazon.obj");
 
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Textures/Skybox/fondort.png");//derecha 
@@ -385,6 +408,15 @@ int main()
 	skyboxFaces.push_back("Textures/Skybox/fondoup.png");//arriba
 	skyboxFaces.push_back("Textures/Skybox/fondobk.png");//atras
 	skyboxFaces.push_back("Textures/Skybox/fondofrente.png");//frente
+	std::vector<std::string> skyboxFaces2;
+	skyboxFaces2.push_back("Textures/Skybox/fondodiart.png");//derecha 
+	skyboxFaces2.push_back("Textures/Skybox/fondodialeft.png");//izq
+	skyboxFaces2.push_back("Textures/Skybox/fondodn.png");//abajo
+	skyboxFaces2.push_back("Textures/Skybox/fondodiaup.png");//arriba
+	skyboxFaces2.push_back("Textures/Skybox/fondodiabk.png");//atras
+	skyboxFaces2.push_back("Textures/Skybox/fondodiafrente.png");//frente
+	
+	
 
 	skybox = Skybox(skyboxFaces);
 
@@ -400,42 +432,51 @@ int main()
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
 	//Declaración de primer luz puntual
-	
+	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
+		2.0f, 2.0f,//intensidad
+		0.0f+posXperro,0.0f+posYperro,0.0f+posZperro,//posPerro.x,posPerro.y,posPerro.z,//posicion
+		0.5f, 0.2f, 0.1f);//4(.2)^2-2*0.5*0.1
+	pointLightCount++;
+	/*luna*/
+	pointLights[1] = PointLight(0.2f, 0.0f, 1.0f,
+		3.0f, 3.0f,//intensidad
+		-110.00, 60.00, -45.00, //
+		0.000000000000005f, 0.1f, 0.000000000050f);//4(.2)^2-2*0.5*0.1
+	pointLightCount++;
 
 	unsigned int spotLightCount = 0;
-	//linterna
-	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.0f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
-	spotLightCount++;
-
-	//luz fija
-	spotLights[1] = SpotLight(1.0f, 1.0f, 1.0f,
-		1.0f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+	//linterna amor y amistad
+	spotLights[0] = SpotLight(0.5f, 0.0f, 0.2f,
+		0.0f, 0.0f,
+		17.0f, 100.0f, 22.0f,//pos
+		0.0f, -0.5f, 0.0f,//dir
+		1.0f, 0.0f, 0.0f,//4*25-2
 		10.0f);
 	spotLightCount++;
-	spotLights[2] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.7f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
+	//linterna pascua
+	spotLights[1] = SpotLight(0.0f, 0.0f, 1.0f,
+		0.0f, 0.0f,
+		22.0f, 100.0f, -22.0f,//pos
+		0.0f, -0.5f, 0.0f,//dir
+		1.0f, 0.0f, 0.0f,//4*25-2
 		10.0f);
 	spotLightCount++;
-	//luz de helicóptero
-	spotLights[3] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.5f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -5.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		15.0f);
+	//navidad
+	spotLights[2] = SpotLight(0.0f, 0.3f, 0.1f,
+		0.0f, 0.0f,
+		-13.0f, 100.0f, -21.0f,//pos
+		0.0f, -0.5f, 0.0f,//dir
+		1.0f, 0.0f, 0.0f,//4*25-2
+		10.0f);
 	spotLightCount++;
-	//luz de faro
+	//mexico
+	spotLights[3] = SpotLight(0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f,
+		-13.0f, 100.0f, 17.0f,//pos
+		0.0f, -0.5f, 0.0f,//dir
+		1.0f, 0.0f, 0.0f,//4*25-2
+		10.0f);
+	spotLightCount++;
 
 	
 
@@ -479,8 +520,7 @@ int main()
 		//luz ligada a la cámara de tipo flash 
 		glm::vec3 lowerLight = camera.getCameraPosition();
 		lowerLight.y -= 0.3f;
-		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
-		
+		//spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 		//información al shader de fuentes de iluminación
 		shaderList[0].SetDirectionalLight(&mainLight);
 		shaderList[0].SetPointLights(pointLights, pointLightCount);
@@ -511,7 +551,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Escenario_M.RenderModel();
 		
-		/*PERRO*/
+		/***********************************************************************************PERRO************************************************************/
 		offsetYperro+=1*deltaTime;
 		posYperro = 3*sin(offsetYperro*toRadians);
 		
@@ -527,6 +567,7 @@ int main()
 					avanzarIzquierda = false;
 					offsetXperro = 0.0f;
 				}
+				pointLights[0].SetColor(1.0f,0.0f,7.0f);
 			}
 			if (avanzarDerecha && !hacerCirculo && !avanzarIzquierda) {
 				/*hacer que avance a hacer circulo*/
@@ -544,7 +585,7 @@ int main()
 						anguloXperro += offsetZperro * deltaTime;
 					}
 					//else i
-						
+					
 				}
 				else {
 					if(anguloXperro<-360.0 && anguloXperro>-540.0) {
@@ -560,7 +601,7 @@ int main()
 					}
 					
 				}
-				
+				pointLights[0].SetColor(1.0f, 0.0f, 0.0f);
 			}
 			if (!avanzarDerecha && hacerCirculo && !avanzarIzquierda) {
 				/*hacer que avance a avanzar izq*/
@@ -581,18 +622,15 @@ int main()
 						offsetZperro = 0.0f;
 					}	
 				}
+				pointLights[0].SetColor(0.0f, 0.5f, 0.5f);
 			}
 		
 		
 	
 		
 		glm::vec3 despPerro = glm::vec3(posXperro, posYperro, posZperro);
-		glm::vec3 posPerro= glm::vec3(0.0f, -2.0f, 0.0f)+despPerro;
-		//pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
-		//	0.0f, 0.0f,//intensidad
-		//	0.0f,0.0f,0.0f,//posPerro.x,posPerro.y,posPerro.z,//posicion
-		//	0.5f, 0.2f, 0.1f);//4(.2)^2-2*0.5*0.1
-		//pointLightCount++;
+		posPerro= glm::vec3(0.0f, -2.0f, 0.0f)+despPerro;
+		pointLights[0].SetPos(posPerro+ glm::vec3(1.0f, 9.0f, 0.0f));
 		model = glm::mat4(1.0);
 		model = glm::scale(model, glm::vec3(0.6f, 0.6f, 0.6f));
 		model = glm::translate(model, posPerro);
@@ -601,7 +639,7 @@ int main()
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		Perro_M.RenderModel();
 
-		/***************************************************MURCIELAGO***********************************************************************/
+		/***************************************************************MURCIELAGO***********************************************************************/
 		
 			if (!girarCirculo1 && !irACirculo2 && !girarCirculo2 && !irACirculo1) {
 				//girar circulo 1
@@ -695,7 +733,11 @@ int main()
 				}
 			}
 		
-		
+			if (offsetYmur2 > 360) {
+				offsetYmur2 = 0.0;
+			}
+			offsetYmur2 += 50.0*deltaTime;
+			posYmur = sin(offsetYmur2*toRadians);
 		glm::vec3 despMurcielago = glm::vec3(posXmur, posYmur, posZmur);
 		glm::vec3 posMurcielago = glm::vec3(-31.0f, 100.0f, 30.0f) + despMurcielago;
 		model = glm::mat4(1.0);
@@ -706,19 +748,41 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		murcielago_M.RenderModel();
-
-		/*********************************************************************Jack********************************************/
-		/******************ir al arbol del amor y la amistad*/
-
-		if (mainWindow.iniciaAnim()) {
-		if (anguloZjack < 30.0) {
-			offsetZangulojack += 4.5*deltaTime;
-			anguloZjack = 10 * sin(offsetZangulojack * toRadians);
+		/***************************************************************MURCIELAGO 2BASICA**********************************************/
+		if (mainWindow.iniciaAnim2()) {
+			offsetZmur2 = 0.0f;
 		}
+		if (offsetZmur2<360) {
+			offsetZmur2 += 2.0*deltaTime;
+			posXmur2 = 50*sin(offsetZmur2*toRadians);
+			posYmur2 = sin(offsetYmur2*toRadians);
+		}
+		
+		glm::vec3 despMurcielago2 = glm::vec3(posXmur2, posYmur2, posZmur2);
+		glm::vec3 posMurcielago2 = glm::vec3(30.0f, 100.0f, -30.0f) + despMurcielago2;
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::translate(model, posMurcielago2);
+		model = glm::rotate(model, (45)*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		murcielago_M.RenderModel();
+
+		/*********************************************************************Jack***************************************************/
+		
+
+		//if (mainWindow.iniciaAnim()) {
+		/*          Brazeo                */
+			if (anguloZjack < 30.0) {
+				offsetZangulojack += 4.5*deltaTime;
+				anguloZjack = 10 * sin(offsetZangulojack * toRadians);
+			}
+			/******************ir al arbol del amor y la amistad*/
 			if (!irAAmor && !irAPascua && !irANavidad && !irAMexico && !regreso) {
 				if (posZjack < 18.0) {
-					offsetZjack += 0.003*deltaTime;
-					posZjack += offsetZjack * deltaTime;
+					offsetZjack += 0.005*deltaTime;
+					posZjack += offsetZjack ;
 				}
 				else {
 					if (anguloYjack < 90.0) {
@@ -727,7 +791,7 @@ int main()
 					}
 					else {
 						if (posXjack < 12.0) {
-							offsetXjack += 0.003*deltaTime;
+							offsetXjack += 0.005*deltaTime;
 							posXjack += offsetXjack * deltaTime;
 						}
 						else {
@@ -870,7 +934,7 @@ int main()
 				}
 				printf("\nyendo a centro");
 			}
-		}
+		//}
 		
 		/*printf("\nposx:%.2f", posXjack);
 		printf("\nposZ:%.2f", posZjack);
@@ -878,12 +942,13 @@ int main()
 		printf("\nangulooZ	:%.2f", anguloZjack);*/
 		
 		glm::vec3 despJack = glm::vec3(posXjack, posYjack, posZjack);
-		glm::vec3 posJack= glm::vec3(0.0f, -2.0f, 0.0f) + despJack;
+		glm::vec3 posJack= glm::vec3(0.0f + despJack.x, -2.0f + despJack.y, 0.0f + despJack.z) ;
 		model = glm::mat4(1.0);
 		model = glm::translate(model,posJack);
 		modelAux = model;//jerarquizacion
 		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
 		model = glm::rotate(model, anguloYjack * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		torzoJack_M.RenderModel();
 		/********brazoderecho*********/
@@ -922,7 +987,91 @@ int main()
 		model = glm::rotate(model, anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		piernaJack_M.RenderModel();
+		/***************************************************Corazón flotante******************************************************/
+		if (mainWindow.iniciaAnim()) {
+			offsetXcorazon = 0.0f;
+		}
+		if (offsetXcorazon<360.0) {
+			offsetXcorazon += 150.5*toRadians;
+			posXcorazon = (float)(1 * cos(offsetXcorazon*toRadians)); //calculo de x
+			posYcorazon = (float)(1 * sin(offsetXcorazon*toRadians)); //calculo de y 
 
+		}
+		glm::vec3 despCorazon = glm::vec3(posXcorazon, posYcorazon, posZcorazon);
+		glm::vec3 posCorazon= glm::vec3(12.0f , 0.0f , 22.0f )+despCorazon;
+		model = glm::mat4(1.0);
+		model = glm::translate(model, posCorazon);
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		//model = glm::rotate(model, anguloZjack * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Corazon_M.RenderModel();
+		tiempo += 0.01 * deltaTime;
+		//printf("\nDelta			: %.2f",tiempo);
+		if (((int)tiempo)%10==0 ) {//10.0-10.1 .. 11.0
+			if (contador == 0) {
+				cambio = !cambio;
+				//printf("\nCambio");
+				contador ++;
+				if (cambio) {
+					skybox = Skybox(skyboxFaces);
+					pointLights[0].SetIntensity(3.0, 3.0);
+					pointLights[1].SetIntensity(3.0,3.0);
+				}
+				else {
+					pointLights[0].SetIntensity(0.0, 0.0);
+					skybox = Skybox(skyboxFaces2);
+					pointLights[1].SetIntensity(0.0, 0.0);
+				}
+			}
+		}
+		else {
+			contador = 0;
+		}
+		
+		if (mainWindow.iniciaEspectaculo()) {
+			tiempo2 +=0.15* deltaTime;
+			spotLights[0].SetIntensity(1.0,2.0);//amor
+			spotLights[1].SetIntensity(3.0, 3.0);//pascua
+			spotLights[2].SetIntensity(3.0, 3.0);//navidad
+			spotLights[3].SetIntensity(3.0, 3.0);//mexicana
+			//spotLights[0].SetColor(1.0, 0.0, 1.0);
+			if (((int)tiempo2)%2==0) {
+			//if(fmod(tiempo2,0.5)==0.0){
+				if (contador2 == 0) {
+					contador2++;
+					cambio2++;
+					if (cambio2 == 1) {
+						spotLights[3].SetColor(0.0,1.0,0.0);
+						spotLights[1].SetColor(0.0, 0.5, 0.5);
+					}
+					else if (cambio2==2) {
+						spotLights[3].SetColor(1.0, 1.0, 1.0);
+						spotLights[1].SetColor(0.0, 0.0, 0.4);
+					}
+					else if (cambio2==3)
+					{
+						spotLights[3].SetColor(1.0, 0.0, 0.0);
+						spotLights[1].SetColor(0.5, 0.0, 0.5);
+					}
+					else {
+						cambio2 = 0;
+					}
+				}
+			}
+			else {
+				contador2 = 0;
+			}
+		}
+		else {
+			spotLights[0].SetIntensity(0.0, 0.0);
+			spotLights[1].SetIntensity(0.0, 0.0);
+			spotLights[2].SetIntensity(0.0, 0.0);
+			spotLights[3].SetIntensity(0.0, 0.0);
+		}
+
+		//pointLights[1].SetPos(glm::vec3(mainWindow.getmuevex(), mainWindow.getmuevey(), mainWindow.getmuevez()));
+		//printf("%.2f, %.2f,%.2f", mainWindow.getmuevex(), mainWindow.getmuevey(), mainWindow.getmuevez());
+		//-110.00, 24.00, -45.00
 		glUseProgram(0);
 
 		mainWindow.swapBuffers();
@@ -930,3 +1079,4 @@ int main()
 
 	return 0;
 }
+

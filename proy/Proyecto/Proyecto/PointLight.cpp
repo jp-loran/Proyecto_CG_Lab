@@ -34,7 +34,19 @@ void PointLight::UseLight(GLfloat ambientIntensityLocation, GLfloat ambientcolor
 	glUniform1f(linearLocation, linear);
 	glUniform1f(exponentLocation, exponent);
 }
-
+void PointLight::SetPos(glm::vec3 pos)
+{
+	position = pos;
+}
+void PointLight::SetIntensity(GLfloat aintensity, GLfloat dintensity) {
+	ambientIntensity=aintensity;
+	diffuseIntensity = dintensity;
+}
+void PointLight::SetColor(GLfloat r, GLfloat g, GLfloat b) {
+	color.x = r;
+	color.y = g;
+	color.z = b;
+}
 PointLight::~PointLight()
 {
 }
