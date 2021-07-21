@@ -44,6 +44,7 @@ std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
 
 Camera camera;
+Camera camera2;
 
 Texture brickTexture;
 Texture dirtTexture;
@@ -358,7 +359,8 @@ int main()
 	glm::vec3 posPerro;
 	
 	
-	camera = Camera(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 2.0f, 0.3f);
+	camera = Camera(glm::vec3(0.0f, 10.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 2.0f, 0.3f);
+	camera2 = Camera(glm::vec3(0.0f, 10.0f, 0.0f ), glm::vec3(1.0f, 0.0f, 1.0f), -60.0f, 0.0f, 2.0f, 0.3f);
 													/*Texturas CARGA*/
 
 	brickTexture = Texture("Textures/brick.png");
@@ -375,8 +377,8 @@ int main()
 
 												/*CARGA DE MODELOS*/
 	/*escenario*/
-	Escenario_M = Model();
-	Escenario_M.LoadModel("Models/escenario.obj");
+	/*Escenario_M = Model();
+	Escenario_M.LoadModel("Models/escenario.obj");*/
 
 	/**/
 	torzoJack_M= Model();
@@ -496,13 +498,25 @@ int main()
 
 		//Recibir eventos del usuario
 		glfwPollEvents();
-		camera.keyControl(mainWindow.getsKeys(), deltaTime);
-		camera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange());
-
+		
+		
+		
 		// Clear the window
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+		//skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+		if (mainWindow.cambio3ra()) {
+			//camera2.keyControl(mainWindow.getsKeys(), deltaTime);
+			camera2.mouseControl(0.0f, -89.0);//aérea
+			camera2.setPosition(glm::vec3 (0.0f+mainWindow.getmuevex(), 100.0f, 0.0f+mainWindow.getmuevez()));
+			skybox.DrawSkybox(camera2.calculateViewMatrix(), projection);
+			printf("\n %.2f", mainWindow.getYChange());
+		}
+		else {//3ra persona
+			camera.keyControl(mainWindow.getsKeys(), deltaTime);
+			camera.mouseControl(mainWindow.getXChange(), 0.0f);
+			skybox.DrawSkybox(camera.calculateViewMatrix(), projection);
+		}
 		shaderList[0].UseShader();
 		uniformModel = shaderList[0].GetModelLocation();
 		uniformProjection = shaderList[0].GetProjectionLocation();
@@ -514,8 +528,15 @@ int main()
 		uniformShininess = shaderList[0].GetShininessLocation();
 
 		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
-		glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
+		if (mainWindow.cambio3ra()) {
+			glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera2.calculateViewMatrix()));
+			glUniform3f(uniformEyePosition, camera2.getCameraPosition().x, camera2.getCameraPosition().y, camera2.getCameraPosition().z);
+		}
+		else {
+			glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(camera.calculateViewMatrix()));
+			glUniform3f(uniformEyePosition, camera.getCameraPosition().x, camera.getCameraPosition().y, camera.getCameraPosition().z);
+		}
+		
 
 		//luz ligada a la cámara de tipo flash 
 		glm::vec3 lowerLight = camera.getCameraPosition();
@@ -940,6 +961,8 @@ int main()
 		printf("\nposZ:%.2f", posZjack);
 		printf("\nangulooY:%.2f", anguloYjack);
 		printf("\nangulooZ	:%.2f", anguloZjack);*/
+			
+
 		
 		glm::vec3 despJack = glm::vec3(posXjack, posYjack, posZjack);
 		glm::vec3 posJack= glm::vec3(0.0f + despJack.x, -2.0f + despJack.y, 0.0f + despJack.z) ;
@@ -1069,9 +1092,10 @@ int main()
 			spotLights[3].SetIntensity(0.0, 0.0);
 		}
 
-		//pointLights[1].SetPos(glm::vec3(mainWindow.getmuevex(), mainWindow.getmuevey(), mainWindow.getmuevez()));
-		//printf("%.2f, %.2f,%.2f", mainWindow.getmuevex(), mainWindow.getmuevey(), mainWindow.getmuevez());
-		//-110.00, 24.00, -45.00
+		
+
+		//camara
+		
 		glUseProgram(0);
 
 		mainWindow.swapBuffers();

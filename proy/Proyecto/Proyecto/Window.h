@@ -18,6 +18,8 @@ public:
 	GLfloat getmuevez() { return muevez; }
 	bool	iniciaAnim() { return mueve; }
 	bool	iniciaAnim2() { return mueve2; }
+	bool	cambio3ra() { return cambio; }
+	bool	cambioAerea() { return cambio; }
 	bool	iniciaEspectaculo() { return espectaculo; }
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
@@ -42,6 +44,7 @@ private:
 	bool mueve2;
 	bool mouseFirstMoved;
 	bool espectaculo;
+	bool cambio;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);
 

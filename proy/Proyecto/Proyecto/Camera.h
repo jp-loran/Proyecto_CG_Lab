@@ -19,6 +19,8 @@ public:
 	glm::vec3 getCameraPosition();
 	glm::vec3 getCameraDirection();
 	glm::mat4 calculateViewMatrix();
+	glm::mat4 setDirection(glm::vec3 pos);
+	void setPosition(glm::vec3 pos);
 
 	~Camera();
 
@@ -28,13 +30,13 @@ private:
 	glm::vec3 up;
 	glm::vec3 right;
 	glm::vec3 worldUp;
-
+	glm::vec3 direccion;
 	GLfloat yaw;
 	GLfloat pitch;
 
 	GLfloat moveSpeed;
 	GLfloat turnSpeed;
-
+	glm::vec3 pos;
 	void update();
 };
 
