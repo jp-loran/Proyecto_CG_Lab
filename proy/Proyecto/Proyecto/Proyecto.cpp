@@ -36,7 +36,9 @@ Cambios en el shader, en lugar de enviar la textura en el shader de fragmentos, 
 #include "DirectionalLight.h"
 #include "PointLight.h"
 #include "Material.h"
-
+//para musica 
+#include <irrklang/irrKlang.h>
+using namespace irrklang;
 const float toRadians = 3.14159265f / 180.0f;
 
 Window mainWindow;
@@ -62,6 +64,9 @@ Model piernaJack_M;
 Model Perro_M;
 Model murcielago_M;
 Model Corazon_M;
+Model MurCuerpo_M;
+Model ala1;
+Model ala2;
 /*ANIMACION*/
 //perro
 float offsetXperro = 0.0f;
@@ -91,6 +96,16 @@ bool girarCirculo1 = false;
 bool irACirculo2 = false;
 bool girarCirculo2 = false;
 bool irACirculo1 = false;
+/********MUCRCIELAGO 3 compleja***************/
+float offsetXmur3 = 0.0f;
+float offsetYmur3 = 0.0f;
+float offsetZmur3 = 0.0f;
+float posXmur3 = 0.0f;
+float posYmur3 = 0.0f;
+float posZmur3 = 0.0f;
+float anguloXmur3 = 0.0f;
+float anguloZmur3 = 0.0f;
+float anguloYmur3 = 0.0f;
 //murcielago2 BASICA
 float offsetXmur2 = 0.0f;
 float offsetZmur2 = 360.0f;
@@ -347,6 +362,13 @@ void CreateShaders()
 
 int main()
 {
+	/*para musica*/
+	irrklang::ISoundEngine* engine= irrklang::createIrrKlangDevice();;// tema general
+	irrklang::ISoundEngine* engine2 = irrklang::createIrrKlangDevice();;// sonido del perro
+	irrklang::ISoundEngine* engine3 = irrklang::createIrrKlangDevice();;// para espectaculo
+	engine->play2D("Music/principal.mp3", true);
+	engine->setSoundVolume(0.5f);
+	/***********/
 	mainWindow = Window(1366, 768); // 1280, 1024 or 1024, 768
 	mainWindow.Initialise();
 	bool cambio = true;
@@ -400,6 +422,13 @@ int main()
 	murcielago_M= Model();
 	murcielago_M.LoadModel("Models/bat2.obj");
 
+	MurCuerpo_M = Model();
+	MurCuerpo_M.LoadModel("Models/murcielagoCuerpo.obj");
+	ala1 = Model();
+	ala1.LoadModel("Models/ala1.obj");
+	ala2 = Model();
+	ala2.LoadModel("Models/ala2.obj");
+
 	Corazon_M = Model();
 	Corazon_M.LoadModel("Models/corazon.obj");
 
@@ -436,7 +465,7 @@ int main()
 	//Declaración de primer luz puntual
 	pointLights[0] = PointLight(1.0f, 0.0f, 0.0f,
 		2.0f, 2.0f,//intensidad
-		0.0f+posXperro,0.0f+posYperro,0.0f+posZperro,//posPerro.x,posPerro.y,posPerro.z,//posicion
+		0.0f,0.0f,0.0f,//posPerro.x,posPerro.y,posPerro.z,//posicion
 		0.5f, 0.2f, 0.1f);//4(.2)^2-2*0.5*0.1
 	pointLightCount++;
 	/*luna*/
@@ -634,8 +663,13 @@ int main()
 					offsetZperro += 0.5 * deltaTime;//angulo
 					if (anguloXperro < 0.0) {
 						anguloXperro += offsetZperro * deltaTime;
+						if (!engine->isCurrentlyPlaying("Music/perro.mp3")) {
+							engine2->play2D("Music/perro.mp3");
+							engine2->setSoundVolume(0.30f);
+						}
 					}
 					else {
+						engine2->setAllSoundsPaused();
 						avanzarDerecha = false;
 						hacerCirculo = false;
 						avanzarIzquierda = false;
@@ -646,8 +680,6 @@ int main()
 				pointLights[0].SetColor(0.0f, 0.5f, 0.5f);
 			}
 		
-		
-	
 		
 		glm::vec3 despPerro = glm::vec3(posXperro, posYperro, posZperro);
 		posPerro= glm::vec3(0.0f, -2.0f, 0.0f)+despPerro;
@@ -772,6 +804,7 @@ int main()
 		/***************************************************************MURCIELAGO 2BASICA**********************************************/
 		if (mainWindow.iniciaAnim2()) {
 			offsetZmur2 = 0.0f;
+
 		}
 		if (offsetZmur2<360) {
 			offsetZmur2 += 2.0*deltaTime;
@@ -789,7 +822,43 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
 		murcielago_M.RenderModel();
+		/**************************************************MURCIELAGO COMPLEJA CON ALAS*********************************************************/
+		offsetZmur3 += 2.0*deltaTime;
+		posXmur3 = 50 * sin(offsetZmur3*toRadians);
+		posYmur3 = sin(offsetYmur2*toRadians);
 
+		posXmur3 = (float)(40 * cos(offsetZmur3*toRadians)); //calculo de x
+		posZmur3 = (float)(20 * sin(offsetZmur3*toRadians)); //calculo de y 
+
+		glm::vec3 despMurcielago3 = glm::vec3(posXmur3, 0.0f, posZmur3);
+		glm::vec3 posMurcielago3 = glm::vec3(30.0f, 100.0f, -80.0f) + despMurcielago3;
+		model = glm::mat4(1.0);
+		model = glm::scale(model, glm::vec3(0.25f, 0.25f, 0.25f));
+		model = glm::translate(model, posMurcielago3);
+		modelAux = model;
+		model = glm::rotate(model, (45)*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		MurCuerpo_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, (45+posYmur3*10)*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 7.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		ala1.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = modelAux;
+		model = glm::rotate(model, (45 + posYmur3 * 10)*toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, (-90) * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(0.0f, 7.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
+		ala2.RenderModel();
 		/*********************************************************************Jack***************************************************/
 		
 
@@ -1052,6 +1121,12 @@ int main()
 		}
 		
 		if (mainWindow.iniciaEspectaculo()) {
+			if (!engine3->isCurrentlyPlaying("Music/fiesta.mp3")) {
+				//irrklang::ISoundEngine* engine3 = irrklang::createIrrKlangDevice();;// para
+				engine3->play2D("Music/fiesta.mp3");
+				engine3->setSoundVolume(0.5f);
+			}
+			
 			tiempo2 +=0.15* deltaTime;
 			spotLights[0].SetIntensity(1.0,2.0);//amor
 			spotLights[1].SetIntensity(3.0, 3.0);//pascua
@@ -1086,6 +1161,7 @@ int main()
 			}
 		}
 		else {
+			engine3->stopAllSounds();
 			spotLights[0].SetIntensity(0.0, 0.0);
 			spotLights[1].SetIntensity(0.0, 0.0);
 			spotLights[2].SetIntensity(0.0, 0.0);
