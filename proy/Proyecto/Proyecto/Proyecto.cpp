@@ -399,8 +399,8 @@ int main()
 
 												/*CARGA DE MODELOS*/
 	/*escenario*/
-	/*Escenario_M = Model();
-	Escenario_M.LoadModel("Models/escenario.obj");*/
+	Escenario_M = Model();
+	Escenario_M.LoadModel("Models/escenario.obj");
 
 	/**/
 	torzoJack_M= Model();
